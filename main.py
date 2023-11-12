@@ -2,14 +2,14 @@ import random
 import time
 
 from paho.mqtt import client as mqtt_client
+from data.GoldPrice import GoldSensor
 
-
-broker = '192.168.10.137'
+broker = '192.168.10.102'
 port = 1883
-topic = "/python/mqtt"
+topic = "test"
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 1000)}'
-
+a
 
 def connect_mqtt():
     def on_connect(client, userdata, flags, rc):
@@ -27,16 +27,17 @@ def connect_mqtt():
 def publish(client):
     msg_count = 0
     while True:
-        time.sleep(1)
-        msg = f"messages: {msg_count}"
+        goldinfo = GoldSensor().update()
+        msg = goldinfo['price']
         result = client.publish(topic, msg)
         # result: [0, 1]
         status = result[0]
         if status == 0:
-            print(f"Send `{msg}` to topic `{topic}`")
+            print(f"Send {msg} to topic `{topic}`")
         else:
             print(f"Failed to send message to topic {topic}")
-        msg_count += 1
+        time.sleep(10)
+
 
 
 def run():
