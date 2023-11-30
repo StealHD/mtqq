@@ -3,7 +3,7 @@ import random
 import time
 import json
 from paho.mqtt import client as mqtt_client
-from data.GoldPrice import GoldSensor
+from data.GoldPrice import GoldPrice
 
 broker = '192.168.10.102'
 port = 9042
@@ -35,7 +35,7 @@ def publish(client):
     :return: topic to mqtt server
     """
     while True:
-        goldInfo = GoldSensor().update()
+        goldInfo = GoldPrice().update()
         msg = goldInfo
         result = client.publish(topic, json.dumps(msg, ensure_ascii=False))
         status = result[0]

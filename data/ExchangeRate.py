@@ -1,3 +1,4 @@
+from bean.WebSeed import WebSeed
 import datetime
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -9,7 +10,7 @@ class GoldPrice():
         self._entries = {}
 
 
-    def update(self, url, driver):
+    def get_data(self, url, driver):
         driver.get(url)
         goldPricePath = (By.XPATH, '//*[@id="goldTableSum"]/tbody/tr/td[1]/em')
         wait = WebDriverWait(driver, 10)
