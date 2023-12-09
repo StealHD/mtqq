@@ -64,7 +64,7 @@ def publish(client):
                 print(f"Send {rateMsg} to topic `{rateTopic}`")
             else:
                 print(f"Failed to send message to topic {goldTopic}")
-            time.sleep(600)
+            time.sleep(3600)
 
     goldThread = threading.Thread(target=goldPriceTask)
     rateThread = threading.Thread(target=exchangeRateTask)
