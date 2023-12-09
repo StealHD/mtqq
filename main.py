@@ -52,7 +52,7 @@ def publish(client):
                 print(f"Send {goldMsg} to topic `{goldTopic}`")
             else:
                 print(f"Failed to send message to topic {goldTopic}")
-            time.sleep(10)
+            time.sleep(60*60*12)
 
     def exchangeRateTask():
         drive = WebSeed().driver()
@@ -64,7 +64,7 @@ def publish(client):
                 print(f"Send {rateMsg} to topic `{rateTopic}`")
             else:
                 print(f"Failed to send message to topic {goldTopic}")
-            time.sleep(10)
+            time.sleep(600)
 
     goldThread = threading.Thread(target=goldPriceTask)
     rateThread = threading.Thread(target=exchangeRateTask)
