@@ -7,8 +7,8 @@ from bean.WebSeed import WebSeed
 from data import GoldPrice,ExchangeRate
 import threading
 
-broker = '192.168.10.102'
-port = 9042
+broker = '47.245.103.174'
+port = 1883
 goldTopic = "homeassistant/gold_price"
 rateTopic = "homeassistant/exchange_rate"
 # generate client ID with pub prefix randomly
